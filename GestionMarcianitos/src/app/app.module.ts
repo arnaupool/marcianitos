@@ -8,6 +8,7 @@ import { CrearnavenodrizaComponent } from './navenodriza/crearnavenodriza/crearn
 import { CrearmarcianoComponent } from './marciano/crearmarciano/crearmarciano.component';
 import { SubirmarcianoComponent } from './marciano/subirmarciano/subirmarciano.component';
 import { BajarmarcianoComponent } from './marciano/bajarmarciano/bajarmarciano.component';
+import { CrearrevisionComponent } from './revision/crearrevision/crearrevision.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BajarmarcianoComponent } from './marciano/bajarmarciano/bajarmarciano.c
     CrearnavenodrizaComponent,
     CrearmarcianoComponent,
     SubirmarcianoComponent,
-    BajarmarcianoComponent
+    BajarmarcianoComponent,
+    CrearrevisionComponent
   ],
   imports: [
     BrowserModule
