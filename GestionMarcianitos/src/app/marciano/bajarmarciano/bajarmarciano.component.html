@@ -1,17 +1,17 @@
 <html>
 
 <body>
-    <form autocomplete="off">
+    <form (ngSubmit)="bajarMarciano()" autocomplete="off">
         <div class="container">
             <h3>Bajar pasajero</h3>
             <br>
             <div class="form-group">
                 <label>Identificador pasajero</label>
-                <input type="text" class="form-control" id="idMarciano" placeholder="ID Marciano" required>
+                <input type="text" class="form-control" id="idMarciano" [ngModel]="idMarciano" placeholder="ID Marciano" required>
             </div>
             <div class="form-group">
                 <label>Identificador Aeronave</label>
-                <input type="text" class="form-control" id="idAeronave" placeholder="ID Aeronave" required>
+                <input type="text" class="form-control" id="idAeronave" [ngModel]="idAeronave" placeholder="ID Aeronave" required>
             </div>
             <div class="form-group">
                 <div class="form-row float-right">
