@@ -1,23 +1,45 @@
-<p>crearaeronave works!</p>
 <html>
 
 <body>
-    <div class="container">
-        <div class="col">
-            <div class="row">
-                <input type="text" class="form-control" id="id" placeholder="ID Aeronave" required>
+    <form autocomplete="off">
+        <div class="container">
+            <h3>Crear aeronave</h3>
+            <br>
+            <div class="form-group">
+                <label>Identificador</label>
+                <input type="text" class="form-control" id="id" placeholder="ID" required>
             </div>
-            <div class="row">
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre Aeronave" required>
+            <div class="form-group">
+                <label>Nombre Aeronave</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
             </div>
-            <div class="row">
-                <input type="number" class="form-control" id="nombre" placeholder="máx Marcianos" required>
+            <div class="form-group">
+                <label>Máximo de marcianos</label>
+                <input type="number" class="form-control" id="maxMarcianos" placeholder="máx" required>
             </div>
-            <div class="row">
-                <button class="btn btn-primary">Click</button>
+            <div class="form-group">
+                <label>Naves nodrizas</label>
+                <div class="form-row">
+                    <div class="col">
+                        <select class="custom-select mr-sm-2" id="idOrigen"></select>
+                    </div>
+                    <div class="col">
+                        <select class="custom-select mr-sm-2" id="idDestino"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row float-right">
+                    <div class="form-col">
+                        <button class="btn btn-primary">Cancelar</button>
+                    </div>
+                    <div class="form-col">
+                        <button class="btn btn-primary ml-3">Crear</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 
 </html>
