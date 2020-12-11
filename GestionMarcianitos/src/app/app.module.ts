@@ -6,6 +6,8 @@ import { CrearaeronaveComponent } from './aeronave/crearaeronave/crearaeronave.c
 import { ListaraeronaveComponent } from './aeronave/listaraeronave/listaraeronave.component';
 import { CrearnavenodrizaComponent } from './navenodriza/crearnavenodriza/crearnavenodriza.component';
 import { CrearmarcianoComponent } from './marciano/crearmarciano/crearmarciano.component';
+import { SubirmarcianoComponent } from './marciano/subirmarciano/subirmarciano.component';
+import { BajarmarcianoComponent } from './marciano/bajarmarciano/bajarmarciano.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { CrearmarcianoComponent } from './marciano/crearmarciano/crearmarciano.c
     CrearaeronaveComponent,
     ListaraeronaveComponent,
     CrearnavenodrizaComponent,
-    CrearmarcianoComponent
+    CrearmarcianoComponent,
+    SubirmarcianoComponent,
+    BajarmarcianoComponent
   ],
   imports: [
     BrowserModule
