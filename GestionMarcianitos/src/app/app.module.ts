@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CrearaeronaveComponent } from './aeronave/crearaeronave/crearaeronave.component';
@@ -22,7 +23,8 @@ import { CrearrevisionComponent } from './revision/crearrevision/crearrevision.c
     CrearrevisionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
