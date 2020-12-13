@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
+// Services
+import {MarcianoService} from './services/marciano.service';
 
 @Component({
   selector: 'app-root',

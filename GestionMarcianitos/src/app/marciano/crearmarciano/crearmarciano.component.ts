@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// Services
+import {MarcianoService} from '../../services/marciano.service';
+
 @Component({
   selector: 'app-crearmarciano',
   templateUrl: './crearmarciano.component.html',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearmarcianoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private marcianoService:MarcianoService
+  ) { }
 
   ngOnInit(): void {
   }
