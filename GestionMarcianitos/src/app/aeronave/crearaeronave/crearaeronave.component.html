@@ -7,26 +7,26 @@
             <br>
             <div class="form-group">
                 <label>Identificador</label>
-                <input type="text" class="form-control" id="idAeronave" [ngModel]="idAeronave" placeholder="ID" required>
+                <input type="text" class="form-control" id="idAeronave" formControlName="idAeronave" placeholder="ID" required>
             </div>
             <div class="form-group">
                 <label>Nombre Aeronave</label>
-                <input type="text" class="form-control" id="nombreAeronave" [ngModel]="nombreAeronave" placeholder="Nombre" required>
+                <input type="text" class="form-control" id="nombreAeronave" formControlName="nombreAeronave" placeholder="Nombre" required>
             </div>
             <div class="form-group">
                 <label>Máximo de marcianos</label>
-                <input type="number" class="form-control" id="maxMarcianos" [ngModel]="maxMarcianos" placeholder="máx" required>
+                <input type="number" class="form-control" id="maxMarcianos" formControlName="maxMarcianos" placeholder="máx" required>
             </div>
             <div class="form-group">
                 <label>Naves nodrizas</label>
                 <div class="form-row">
                     <div class="col ml-3">
                         <label>Origen</label>
-                        <select class="custom-select mr-sm-2" id="idOrigen" [ngModel]="idOrigen" required></select>
+                        <select class="custom-select mr-sm-2" id="idOrigen" formControlName="idOrigen" required></select>
                     </div>
                     <div class="col ml-3">
                         <label>Destino</label>
-                        <select class="custom-select mr-sm-2" id="idDestino" [ngModel]="idDestino" required></select>
+                        <select class="custom-select mr-sm-2" id="idDestino" formControlName="idDestino" required></select>
                     </div>
                 </div>
             </div>

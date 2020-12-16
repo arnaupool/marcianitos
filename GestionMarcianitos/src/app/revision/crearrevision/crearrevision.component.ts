@@ -11,5 +11,6 @@ export class CrearrevisionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  crearRevision(){}
 }

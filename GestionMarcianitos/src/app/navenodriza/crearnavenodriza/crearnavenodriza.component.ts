@@ -12,4 +12,6 @@ export class CrearnavenodrizaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  crearNavenodriza(){}
+
 }

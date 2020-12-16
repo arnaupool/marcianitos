@@ -12,4 +12,6 @@ export class CrearaeronaveComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  crearAeronave(){}
+
 }

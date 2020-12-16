@@ -1,17 +1,33 @@
 <html>
 
 <body>
-    <form (ngSubmit)="crearMarciano()" autocomplete="off">
+    <form [formGroup]="crearMarcianoForm" (ngSubmit)="crearMarciano()" autocomplete="off">
         <div class="container">
             <h3>Crear Marciano</h3>
             <br>
             <div class="form-group">
                 <label>Identificador</label>
-                <input type="text" class="form-control" id="idMarciano" [ngModel]="idMarciano" placeholder="ID" required>
+                <input type="text" class="form-control" id="idMarciano" formControlName="idMarciano" placeholder="ID" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.idMarciano">
+                        <div class="error-message alert alert-danger" *ngIf="crearMarcianoForm.get('idMarciano').hasError(error.type) &&
+                                      (crearMarcianoForm.get('idMarciano').dirty || crearMarcianoForm.get('idMarciano').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
             <div class="form-group">
                 <label>Nombre Marciano</label>
-                <input type="text" class="form-control" id="nombreMarciano" [ngModel]="nombreMarciano" placeholder="Nombre" required>
+                <input type="text" class="form-control" id="nombreMarciano" formControlName="nombreMarciano" placeholder="Nombre" required>
+                <div class="error-messages">
+                    <ng-container *ngFor="let error of errorMessages.nombreMarciano">
+                        <div class="error-message alert alert-danger" *ngIf="crearMarcianoForm.get('nombreMarciano').hasError(error.type) &&
+                                      (crearMarcianoForm.get('nombreMarciano').dirty || crearMarcianoForm.get('nombreMarciano').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
             <div class="form-group">
                 <div class="form-row float-right">
@@ -19,7 +35,7 @@
                         <button class="btn btn-primary">Cancelar</button>
                     </div>
                     <div class="form-col">
-                        <button type="submit" class="btn btn-primary ml-3">Crear</button>
+                        <button type="submit" class="btn btn-primary ml-3" [disabled]="!crearMarcianoForm.valid">Crear</button>
                     </div>
                 </div>
             </div>

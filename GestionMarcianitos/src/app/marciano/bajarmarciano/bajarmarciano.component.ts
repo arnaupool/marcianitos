@@ -12,4 +12,6 @@ export class BajarmarcianoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  bajarMarciano(){}
+
 }

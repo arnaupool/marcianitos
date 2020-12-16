@@ -12,4 +12,5 @@ export class SubirmarcianoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  subirMarciano(){}
 }
