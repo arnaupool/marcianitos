@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+
+// Entities
+import { Marciano } from '../entities/marciano';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +12,14 @@ import {HttpClient} from '@angular/common/http';
 export class MarcianoService {
 
   constructor(
-    private http: HttpClient
+    private httpService: HttpClient
   ) { }
-/*
-  crearMarciano(){
-    this.http.post('/marciano',);
-  } */
+
+  crearMarciano(marciano: Marciano): Observable<any> {
+    return this.httpService.post('/marciano', marciano);
+  } 
+
+  listarMarciano(){
+    return this.httpService.get
+  }
 }
