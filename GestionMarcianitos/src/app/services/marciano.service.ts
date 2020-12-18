@@ -24,7 +24,7 @@ export class MarcianoService {
   }
 
   listarMarciano(idAeronave: number): Observable<Marciano[]>{
-    return this.httpService.get<Marciano[]>('http://localhost:8000/'+ idAeronave);
+    return this.httpService.get<Marciano[]>('http://localhost:8000/marciano/' + idAeronave);
   }
 
 }
