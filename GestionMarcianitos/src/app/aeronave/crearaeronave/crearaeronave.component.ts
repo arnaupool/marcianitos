@@ -8,6 +8,11 @@ import {
 
 // Services
 import {AeronaveService} from '../../services/aeronave.service';
+import {NavenodrizaService} from '../../services/navenodriza.service';
+
+
+// Entities
+import { Navenodriza } from '../../entities/navenodriza';
 
 @Component({
   selector: 'app-crearaeronave',
@@ -17,15 +22,18 @@ import {AeronaveService} from '../../services/aeronave.service';
 export class CrearaeronaveComponent implements OnInit {
   crearAeronaveForm: FormGroup;
   errorMessages: any;
+  naveNodriza: Navenodriza[] = [];
 
   constructor(
     private aeroNaveService: AeronaveService,
+    private navenodrizaService: NavenodrizaService,
     private readonly formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.defineValidators();
     this.defineErrorMessages();
+    this.listarNavesNodrizas();
   }
 
   defineValidators() {
@@ -98,6 +106,22 @@ export class CrearaeronaveComponent implements OnInit {
     };
   }
 
-  crearAeronave(){}
+  crearAeronave(){
+    this.aeroNaveService.crearAeroNave({
+      id: this.crearAeronaveForm.value.idAeronave,
+      nombre: this.crearAeronaveForm.value.nombreAeronave,
+      max: this.crearAeronaveForm.value.maxMarcianos,
+      origen: this.crearAeronaveForm.value.idOrigen,
+      destino: this.crearAeronaveForm.value.idDestino
+    }).subscribe( (res) => console.log(res));
+  }
 
+ listarNavesNodrizas(){
+     this.navenodrizaService.listarNaves().subscribe(
+      (res) => {
+        this.naveNodriza = res as Navenodriza[];
+        console.log(this.naveNodriza);
+      }
+    );
+  }
 }

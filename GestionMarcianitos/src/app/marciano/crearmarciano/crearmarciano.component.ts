@@ -69,7 +69,7 @@ crearMarciano(){
     id: this.crearMarcianoForm.value.idMarciano,
     nombre: this.crearMarcianoForm.value.nombreMarciano,
     idAeronave: null
-  }).subscribe( (res) => console.log(res) )
+  }).subscribe( (res) => console.log(res));
 }
 
 ngOnDestroy() {

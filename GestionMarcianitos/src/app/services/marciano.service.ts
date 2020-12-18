@@ -17,7 +17,7 @@ export class MarcianoService {
 
   crearMarciano(marciano: Marciano) {
     return this.httpService.post('http://localhost:8000/marciano', marciano);
-  } 
+  }
 
   modificarMarciano(marciano: Marciano){
     return this.httpService.put('http://localhost:8000/marciano', marciano);
