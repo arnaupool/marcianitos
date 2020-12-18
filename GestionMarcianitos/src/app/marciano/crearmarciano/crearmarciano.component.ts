@@ -20,7 +20,7 @@ export class CrearmarcianoComponent implements OnInit {
   errorMessages: any;
 
   constructor(
-    private marcianoService:MarcianoService,
+    private marcianoService: MarcianoService,
     private readonly formBuilder: FormBuilder
   ) { }
 
@@ -32,14 +32,14 @@ export class CrearmarcianoComponent implements OnInit {
 
   defineValidators() {
     this.crearMarcianoForm = this.formBuilder.group({
-      idMarciano: new FormControl('', 
+      idMarciano: new FormControl('',
       Validators.compose([
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(15)
       ])
       ),
-      nombreMarciano:new FormControl('', 
+      nombreMarciano:new FormControl('',
       Validators.compose([
         Validators.required,
         Validators.minLength(1),
