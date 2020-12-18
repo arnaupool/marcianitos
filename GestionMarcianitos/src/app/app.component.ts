@@ -22,7 +22,11 @@ export class AppComponent {
   constructor (private dialog: MatDialog) {}
 
   openDialog(event) {
-    switch (event.target.attributes.id.nodeValue) {
+    let target = event.currentTarget.attributes.id.nodeValue;
+    let target_1 = event.target.parentElement.id;
+    target = target || target_1;
+    console.log(target);
+    switch (target) {
       case "c_aeronave":
         this.component = CrearaeronaveComponent;
         break;
