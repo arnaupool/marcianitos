@@ -1,0 +1,13 @@
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.buttons {
+    margin: 10px;
+}
+
+.wrapper {
+    margin-left: 10px;
+}

@@ -1,1 +1,54 @@
-<p>listarrevision works!</p>
+<div>
+    <form [formGroup]="crearRevisionForm" (ngSubmit)="crearRevision()" autocomplete="off">
+        <div class="container">
+            <h1>Crear revisión de aeronave</h1>
+            <br>
+            <div class="form-group">
+                <label>Identificador</label>
+                <input type="text" class="form-control" id="idRevAeronave" formControlName="idRevAeronave" placeholder="ID" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.idRevAeronave">
+                        <div class="error-message alert alert-danger" *ngIf="crearRevisionForm.get('idRevAeronave').hasError(error.type) &&
+                                      (crearRevisionForm.get('idRevAeronave').dirty || crearRevisionForm.get('idRevAeronave').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Nombre Revisor</label>
+                <input type="text" class="form-control" id="nombreRevisor" formControlName="nombreRevisor" placeholder="Nombre" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.nombreRevisor">
+                        <div class="error-message alert alert-danger" *ngIf="crearRevisionForm.get('nombreRevisor').hasError(error.type) &&
+                                      (crearRevisionForm.get('nombreRevisor').dirty || crearRevisionForm.get('nombreRevisor').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Identificador de aeronave</label>
+                <input type="text" class="form-control" id="idAeronave" formControlName="idAeronave" placeholder="ID de aeronave" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.idAeronave">
+                        <div class="error-message alert alert-danger" *ngIf="crearRevisionForm.get('idAeronave').hasError(error.type) &&
+                                      (crearRevisionForm.get('idAeronave').dirty || crearRevisionForm.get('idAeronave').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row float-right">
+                    <div class="form-col">
+                        <button class="btn btn-primary">Cancelar</button>
+                    </div>
+                    <div class="form-col">
+                        <button type="submit" class="btn btn-primary ml-3" [disabled]="!crearRevisionForm.valid">Crear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

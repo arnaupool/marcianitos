@@ -1,1 +1,11 @@
-<p>listarnodriza works!</p>
+<h1>Naves nodrizas</h1>
+<div fxLayoutAlign="start start">
+    <ul class="aerolist">
+        <li *ngFor="let nodriza of nodrizas">
+          <mat-card class="mat-card">
+            <mat-card-title>ID: {{nodriza.id}}</mat-card-title>
+            <mat-card-content> Nombre: {{nodriza.nombre}}</mat-card-content>
+          </mat-card>
+        </li>
+    </ul>
+</div>

@@ -18,6 +18,7 @@ import { CrearrevisionComponent } from './revision/crearrevision/crearrevision.c
 import { ListarnodrizaComponent } from './navenodriza/listarnodriza/listarnodriza.component';
 import { ListarrevisionComponent } from './revision/listarrevision/listarrevision.component';
 import { ListarhistorialComponent } from './revision/listarhistorial/listarhistorial.component';
+import { DetalleaeronaveComponent } from './aeronave/detalleaeronave/detalleaeronave.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ListarhistorialComponent } from './revision/listarhistorial/listarhisto
     CrearrevisionComponent,
     ListarnodrizaComponent,
     ListarrevisionComponent,
-    ListarhistorialComponent
+    ListarhistorialComponent,
+    DetalleaeronaveComponent
   ],
   imports: [
     BrowserModule,

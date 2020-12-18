@@ -1,1 +1,10 @@
-<p>listaraeronave works!</p>
+<div fxLayoutAlign="start start">
+    <ul class="aerolist">
+        <li *ngFor="let aero of aeronaves" (click)="openDialog(aero)">
+          <mat-card class="mat-card">
+            <mat-card-title>Aeronave: {{aero.id}}</mat-card-title>
+            <mat-card-content> Nombre: {{aero.nombre}}</mat-card-content>
+          </mat-card>
+        </li>
+    </ul>
+</div>
