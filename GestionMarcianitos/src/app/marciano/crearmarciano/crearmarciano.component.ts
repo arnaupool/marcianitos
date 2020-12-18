@@ -10,9 +10,6 @@ import {
 // Services
 import {MarcianoService} from '../../services/marciano.service';
 
-import { Marciano } from 'src/app/entities/marciano';
-
-
 @Component({
   selector: 'app-crearmarciano',
   templateUrl: './crearmarciano.component.html',
@@ -56,12 +53,12 @@ export class CrearmarcianoComponent implements OnInit {
     this.errorMessages = {
       idMarciano: [
         { type: 'required', message: 'ID es necesario.' },
-        { type: 'maxlenght', message: 'El ID debe ser inferior a 15 caracteres .'
+        { type: 'maxlength', message: 'El ID debe ser inferior a 15 caracteres .'
         }
       ],
       nombreMarciano: [
         { type: 'required', message: 'El nombre es necesario.' },
-        { type: 'maxlenght', message: 'El nombre debe ser inferior a 50 caracteres .'
+        { type: 'maxlength', message: 'El nombre debe ser inferior a 50 caracteres .'
         }
       ]
     };

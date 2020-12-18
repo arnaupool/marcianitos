@@ -14,11 +14,17 @@ export class MarcianoService {
   constructor(
     private httpService: HttpClient
   ) { }
+
   crearMarciano(marciano: Marciano) {
     return this.httpService.post('http://localhost:8000/marciano', marciano);
   } 
 
-  listarMarciano(){
-    return this.httpService.get
+  modificarMarciano(marciano: Marciano){
+    return this.httpService.put('http://localhost:8000/marciano', marciano);
   }
+
+  listarMarciano(): Observable<Marciano>{
+    return 
+  }
+
 }

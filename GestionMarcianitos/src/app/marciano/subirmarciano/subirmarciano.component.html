@@ -1,7 +1,7 @@
 <html>
 
 <body>
-    <form (ngSubmit)="subirMarciano()" autocomplete="off">
+    <form [formGroup]="subirMarcianoForm" (ngSubmit)="subirMarciano()" autocomplete="off">
         <div class="container">
             <h3>Asignar pasajero</h3>
             <br>
