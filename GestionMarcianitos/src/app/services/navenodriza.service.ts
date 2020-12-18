@@ -18,6 +18,6 @@ export class NavenodrizaService {
   } 
 
   listarNaves(): Observable<Navenodriza[]>{
-    return this.httpService.get<Navenodriza[]>('http://localhost:8000/naveNodriza' + idAeronave);
+    return this.httpService.get<Navenodriza[]>('http://localhost:8000/naveNodriza');
   }
 }
