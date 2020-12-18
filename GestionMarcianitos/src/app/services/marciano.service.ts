@@ -14,9 +14,8 @@ export class MarcianoService {
   constructor(
     private httpService: HttpClient
   ) { }
-
-  crearMarciano(marciano: Marciano): Observable<any> {
-    return this.httpService.post('/marciano', marciano);
+  crearMarciano(marciano: Marciano) {
+    return this.httpService.post('http://localhost:8000/marciano', marciano);
   } 
 
   listarMarciano(){

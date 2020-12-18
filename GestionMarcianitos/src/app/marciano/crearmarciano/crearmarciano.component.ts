@@ -6,8 +6,11 @@ import {
   Validators
 } from '@angular/forms';
 
+
 // Services
 import {MarcianoService} from '../../services/marciano.service';
+
+import { Marciano } from 'src/app/entities/marciano';
 
 
 @Component({
@@ -65,12 +68,11 @@ export class CrearmarcianoComponent implements OnInit {
   }
 
 crearMarciano(){
-  /*this.marcianoService.
-
-  ({
-    idMarciano: this.crearMarcianoForm.value.idMarciano,
-    nombreMarciano: this.crearMarcianoForm.value.nombreMarciano:
-  })*/
+  this.marcianoService.crearMarciano({
+    id: this.crearMarcianoForm.value.idMarciano,
+    nombre: this.crearMarcianoForm.value.nombreMarciano,
+    idAeronave: null
+  }).subscribe( (res) => console.log(res) )
 }
 
 ngOnDestroy() {
