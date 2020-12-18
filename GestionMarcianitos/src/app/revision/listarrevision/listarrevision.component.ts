@@ -5,6 +5,7 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-listarrevision',
@@ -14,7 +15,7 @@ import {
 export class ListarrevisionComponent implements OnInit {
   crearRevisionForm : FormGroup;
   errorMessages: any;
-  constructor(private readonly formBuilder: FormBuilder) {  }
+  constructor(private readonly formBuilder: FormBuilder, private dialogRef: MatDialogRef<ListarrevisionComponent >) {  }
 
   ngOnInit(): void {
     this.defineValidators();
@@ -44,6 +45,11 @@ export class ListarrevisionComponent implements OnInit {
         Validators.maxLength(15)
       ])
       ),
+      fecha: new FormControl('',
+      Validators.compose([
+        Validators.required
+      ])
+      ),
     });
   }
 
@@ -63,12 +69,19 @@ export class ListarrevisionComponent implements OnInit {
         { type: 'required', message: 'ID de Aeronave es necesario.' },
         { type: 'maxlength', message: 'El número máximo debe ser inferior a 15 caracteres .'
         }
-      ]
+      ],
+      fecha: [
+        { type: 'required', message: 'La fecha de revisión es necesaria.' }
+      ],
     };
   }
 
   crearRevision() {
 
+  }
+
+  cancelar() {
+    this.dialogRef.close();
   }
 
 }
