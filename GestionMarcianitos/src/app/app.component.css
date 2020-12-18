@@ -1,0 +1,9 @@
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.wrapper {
+    margin-left: 10px;
+}

@@ -1,1 +1,19 @@
-<app-crearmarciano></app-crearmarciano>
+<div class="wrapper">
+    <div class="divider"></div>
+    <h1>{{title}}</h1>
+
+    <div>
+        <button mat-button id="c_aeronave" (click)="openDialog($event)">Crear aeronave</button>
+        <div class="divider"></div>
+        <button mat-button id="c_nodriza" (click)="openDialog($event)">Crear nodriza</button>
+        <div class="divider"></div>
+        <button mat-button id="l_nodriza" (click)="openDialog($event)">Listar nodrizas</button>
+        <div class="divider"></div>
+        <button mat-button id="l_rev" (click)="openDialog($event)">Listar revisiones de naves</button>
+        <div class="divider"></div>
+        <button mat-button id="l_hist" (click)="openDialog($event)">Listar historial de revisiones</button>
+    </div>
+    <div class="divider"></div>
+
+    <div><app-listaraeronave></app-listaraeronave></div>
+</div>
