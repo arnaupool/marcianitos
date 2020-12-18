@@ -9,6 +9,9 @@ import {
 // Services
 import {MarcianoService} from '../../services/marciano.service';
 
+// Entities
+import {Marciano} from '../../entities/marciano';
+
 @Component({
   selector: 'app-bajarmarciano',
   templateUrl: './bajarmarciano.component.html',
@@ -17,6 +20,7 @@ import {MarcianoService} from '../../services/marciano.service';
 export class BajarmarcianoComponent implements OnInit {
   bajarMarcianoForm: FormGroup;
   errorMessages: any;
+  marcianos: Marciano[] = [];
 
   constructor(
     private marcianoService:MarcianoService,
@@ -26,6 +30,7 @@ export class BajarmarcianoComponent implements OnInit {
   ngOnInit(): void {
     this.defineValidators();
     this.defineErrorMessages();
+    this.listarMarcianosNave();
   }
 
   defineValidators() {
@@ -69,6 +74,8 @@ export class BajarmarcianoComponent implements OnInit {
       idAeronave: this.bajarMarcianoForm.value.idAeronave,
     }).subscribe( (res) => console.log(res));
   }
+
+  listarMarcianosNave(){}
 
   ngOnDestroy() {
     this.bajarMarcianoForm.value.idMarciano = '';

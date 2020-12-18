@@ -9,6 +9,9 @@ import {
 // Services
 import {MarcianoService} from '../../services/marciano.service';
 
+// Entities
+import {Marciano} from '../../entities/marciano';
+
 @Component({
   selector: 'app-subirmarciano',
   templateUrl: './subirmarciano.component.html',
@@ -17,6 +20,8 @@ import {MarcianoService} from '../../services/marciano.service';
 export class SubirmarcianoComponent implements OnInit {
   subirMarcianoForm: FormGroup;
   errorMessages: any;
+  marcianos: Marciano[] = [];
+
   constructor(
     private marcianoService:MarcianoService,
     private readonly formBuilder: FormBuilder
