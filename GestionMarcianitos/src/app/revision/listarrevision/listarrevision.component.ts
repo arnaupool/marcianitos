@@ -15,7 +15,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog
 export class ListarrevisionComponent implements OnInit {
   crearRevisionForm : FormGroup;
   errorMessages: any;
-  constructor(private readonly formBuilder: FormBuilder, private dialogRef: MatDialogRef<ListarrevisionComponent >) {  }
+  constructor(private readonly formBuilder: FormBuilder, private dialogRef: MatDialogRef<ListarrevisionComponent>) {  }
 
   ngOnInit(): void {
     this.defineValidators();

@@ -19,6 +19,9 @@ import { ListarnodrizaComponent } from './navenodriza/listarnodriza/listarnodriz
 import { ListarrevisionComponent } from './revision/listarrevision/listarrevision.component';
 import { ListarhistorialComponent } from './revision/listarhistorial/listarhistorial.component';
 import { DetalleaeronaveComponent } from './aeronave/detalleaeronave/detalleaeronave.component';
+import { AsignarpasajerosComponent } from './aeronave/detalleaeronave/asignarpasajeros/asignarpasajeros.component';
+import { BajarpasajerosComponent } from './aeronave/detalleaeronave/bajarpasajeros/bajarpasajeros.component';
+import { ListarmarcianosComponent } from './revision/listarhistorial/listarmarcianos/listarmarcianos.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { DetalleaeronaveComponent } from './aeronave/detalleaeronave/detalleaero
     ListarnodrizaComponent,
     ListarrevisionComponent,
     ListarhistorialComponent,
-    DetalleaeronaveComponent
+    DetalleaeronaveComponent,
+    AsignarpasajerosComponent,
+    BajarpasajerosComponent,
+    ListarmarcianosComponent
   ],
   imports: [
     BrowserModule,

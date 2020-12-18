@@ -1,0 +1,11 @@
+<h1>Lista marcianitos de la aeronave {{aero_nombre}} ({{aero_id}})</h1>
+<div fxLayoutAlign="start start">
+    <ul class="aerolist">
+        <li *ngFor="let martian of marcianitos">
+          <mat-card class="mat-card">
+            <mat-card-title>ID: {{martian.id}}</mat-card-title>
+            <mat-card-content> Nombre: {{martian.nombre}}</mat-card-content>
+          </mat-card>
+        </li>
+    </ul>
+</div>

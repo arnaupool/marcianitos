@@ -1,0 +1,30 @@
+<div>
+    <form [formGroup]="bajarPasajeroForm" (ngSubmit)="bajarPasajero()" autocomplete="off">
+        <div class="container">
+            <h3>Bajar pasajero de aeronave: {{nave_nombre}}</h3>
+            <br>
+            <div class="form-group">
+                <label>Identificador</label>
+                <input type="text" class="form-control" id="idPasajero" formControlName="idPasajero" placeholder="ID del pasajero" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.idPasajero">
+                        <div class="error-message alert alert-danger" *ngIf="bajarPasajeroForm.get('idPasajero').hasError(error.type) &&
+                                      (bajarPasajeroForm.get('idPasajero').dirty || bajarPasajeroForm.get('idPasajero').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row float-right">
+                    <div class="form-col">
+                        <button class="btn btn-primary" (click)="cancelar()">Cancelar</button>
+                    </div>
+                    <div class="form-col">
+                        <button type="submit" class="btn btn-primary ml-3" [disabled]="!bajarPasajeroForm.valid">Crear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
