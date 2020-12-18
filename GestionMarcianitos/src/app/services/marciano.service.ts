@@ -23,8 +23,8 @@ export class MarcianoService {
     return this.httpService.put('http://localhost:8000/marciano', marciano);
   }
 
-  listarMarciano(): Observable<Marciano>{
-    return 
+  listarMarciano(idAeronave: number): Observable<Marciano[]>{
+    return this.httpService.get<Marciano[]>('http://localhost:8000/'+ idAeronave);
   }
 
 }

@@ -1,8 +1,8 @@
 export class Revision {
     id: number;
-    nombre: string;
+    nombreRevisor: string;
     fecha: Date;
-    aeronaveRevisada: number;
+    idAeronave: number;
 
 constructor(){}
 }

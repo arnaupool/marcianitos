@@ -1,9 +1,9 @@
 export class Aeronave {
     id: number;
     nombre: string;
-    maxMarcianos: number;
-    naveOrigen: number;
-    naveDestino: number;
+    max: number;
+    origen: number;
+    destino: number;
 
 constructor(){}
 }
