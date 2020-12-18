@@ -44,7 +44,9 @@
                 <div class="form-row">
                     <div class="col ml-3">
                         <label>Origen</label>
-                        <select class="custom-select mr-sm-2" id="idOrigen" formControlName="idOrigen" required></select>
+                        <select class="custom-select mr-sm-2" id="idOrigen" formControlName="idOrigen" required>
+                            <option *ngFor="let nave of this.naveNodriza" value={{nave.id}}>{{nave.nombre}}</option>
+                        </select>
                         <div>
                             <ng-container *ngFor="let error of errorMessages.idOrigen">
                                 <div class="error-message alert alert-danger" *ngIf="crearAeronaveForm.get('idOrigen').hasError(error.type) &&
@@ -56,7 +58,9 @@
                     </div>
                     <div class="col ml-3">
                         <label>Destino</label>
-                        <select class="custom-select mr-sm-2" id="idDestino" formControlName="idDestino" required></select>
+                        <select class="custom-select mr-sm-2" id="idDestino" formControlName="idDestino" required>
+                            <option *ngFor="let nave of this.naveNodriza" value={{nave.id}}>{{nave.nombre}}</option>
+                        </select>
                         <div>
                             <ng-container *ngFor="let error of errorMessages.idDestino">
                                 <div class="error-message alert alert-danger" *ngIf="crearAeronaveForm.get('idDestino').hasError(error.type) &&

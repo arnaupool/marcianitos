@@ -30,14 +30,14 @@ export class BajarmarcianoComponent implements OnInit {
 
   defineValidators() {
     this.bajarMarcianoForm = this.formBuilder.group({
-      idMarciano: new FormControl('', 
+      idMarciano: new FormControl('',
       Validators.compose([
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(15)
       ])
       ),
-      idAeronave:new FormControl('', 
+      idAeronave:new FormControl('',
       Validators.compose([
         Validators.required,
         Validators.minLength(1),
@@ -67,9 +67,9 @@ export class BajarmarcianoComponent implements OnInit {
       id: this.bajarMarcianoForm.value.idMarciano,
       nombre: null, 
       idAeronave: this.bajarMarcianoForm.value.idAeronave,
-    }).subscribe( (res) => console.log(res) )
+    }).subscribe( (res) => console.log(res));
   }
-  
+
   ngOnDestroy() {
     this.bajarMarcianoForm.value.idMarciano = '';
     this.bajarMarcianoForm.value.idAeronave = '';

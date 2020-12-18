@@ -64,7 +64,7 @@ export class SubirmarcianoComponent implements OnInit {
       id: this.subirMarcianoForm.value.idMarciano,
       nombre: null, 
       idAeronave: this.subirMarcianoForm.value.idAeronave,
-    }).subscribe( (res) => console.log(res) )
+    }).subscribe( (res) => console.log(res));
   }
 
   ngOnDestroy() {
