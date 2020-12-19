@@ -23,6 +23,6 @@ export class RevisionService {
   }
 
   listarRevisionesAeronaves(idAeronave: number): Observable<Revision[]>{
-    return this.httpService.get<Revision[]>('http://localhost:8000/revision/' + idAeronave);
+    return this.httpService.get<Revision[]>('http://localhost:8000/revision/revisionAeronave/' + idAeronave);
   }
 }

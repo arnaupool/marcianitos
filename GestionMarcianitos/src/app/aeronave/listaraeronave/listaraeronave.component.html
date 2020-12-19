@@ -1,10 +1,15 @@
-<div fxLayoutAlign="start start">
-    <ul class="aerolist">
-        <li *ngFor="let aero of aeronaves" (click)="openDialog(aero)">
-          <mat-card class="mat-card">
-            <mat-card-title>Aeronave: {{aero.id}}</mat-card-title>
-            <mat-card-content> Nombre: {{aero.nombre}}</mat-card-content>
-          </mat-card>
-        </li>
-    </ul>
+<div class="card" style="width: 30rem;">
+    <h2 class="card-header text-white bg-primary">
+        AERONAVES
+    </h2>
+    <div fxLayoutAlign="start start">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let aero of aeronaves" (click)="openDialog(aero)">
+                <mat-card class="mat-card">
+                    <mat-card-title>Aeronave: {{aero.id}}</mat-card-title>
+                    <mat-card-content> Nombre: {{aero.nombre}}</mat-card-content>
+                </mat-card>
+            </li>
+        </ul>
+    </div>
 </div>

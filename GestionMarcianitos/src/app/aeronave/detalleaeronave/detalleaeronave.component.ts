@@ -1,7 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import { from } from 'rxjs';
+import { Marciano } from 'src/app/entities/marciano';
 import { AsignarpasajerosComponent } from '../detalleaeronave/asignarpasajeros/asignarpasajeros.component';
 import { BajarpasajerosComponent } from '../detalleaeronave/bajarpasajeros/bajarpasajeros.component';
+
+import {MarcianoService} from '../../services/marciano.service';
 
 @Component({
   selector: 'app-detalleaeronave',
@@ -10,20 +14,31 @@ import { BajarpasajerosComponent } from '../detalleaeronave/bajarpasajeros/bajar
 })
 export class DetalleaeronaveComponent implements OnInit {
   nombre : string;
-  id : string;
-  marcianitos = [
+  id : number;
+  max : string;
+  /*marcianitos = [
     { id: "MRC-1", nombre: "XC-P7"},
     { id: "MRC-2", nombre: "Woblo"},
     { id: "MRC-3", nombre: "Manolo"},
     { id: "MRC-4", nombre: "สวัสดี"}
-  ];
-  current : number = this.marcianitos.length;
-  max : number = 10;
+  ];*/
+  marcianitos: Marciano[] = [];
+  current : number;
+  //max : number = 10;
   component;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, private dialog: MatDialog) { this.id = data.id; this.nombre = data.nombre; }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data, 
+    private dialog: MatDialog,
+    private marcianoServie: MarcianoService
+    ) { 
+      this.id = data.id; 
+      this.nombre = data.nombre; 
+      this.max = data.max;
+    }
 
   ngOnInit(): void {
+    this.listarMarcianitos();
   }
 
   openDialog(event) {
@@ -51,5 +66,16 @@ export class DetalleaeronaveComponent implements OnInit {
 
     this.dialog.open(this.component, dialogConfig);
   }
+
+  listarMarcianitos(){
+    this.marcianoServie.listarMarciano(this.id).subscribe(
+      (res) => {
+        this.marcianitos = res as Marciano[];
+        console.log(this.marcianitos);
+        this.current = this.marcianitos.length;
+      }
+    );
+  }
+
 
 }
