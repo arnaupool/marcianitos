@@ -72,7 +72,7 @@ export class AsignarpasajerosComponent implements OnInit {
           this.dialogConfig = new MatDialogConfig();
           this.dialogConfig.disableClose = false;
           this.dialogConfig.autoFocus = true;
-          this.dialogConfig.height = "600px";
+          this.dialogConfig.height = "400px";
           this.dialogConfig.width = "800px";
           this.dialog.open(CrearmarcianoComponent, this.dialogConfig);
 
@@ -80,7 +80,7 @@ export class AsignarpasajerosComponent implements OnInit {
           const dialogConfig = new MatDialogConfig();
           dialogConfig.disableClose = false;
           dialogConfig.autoFocus = true;
-          dialogConfig.height = "200px";
+          dialogConfig.height = "250px";
           dialogConfig.width = "300px";
 
           this.marcianoService.listarMarciano(this.nave_id).subscribe(
@@ -91,6 +91,7 @@ export class AsignarpasajerosComponent implements OnInit {
                   //MESAJE DE ERROR marciano ya subido
                   dialogConfig.data = {motivo: "Error", error: "El marciano ya se encuentra en la nave"}
                   this.dialog.open(VentanaerrorComponent, dialogConfig);
+                  break;
               } else{
               //Asignar pasajero a nave
                 this.marcianoService.modificarMarciano({
