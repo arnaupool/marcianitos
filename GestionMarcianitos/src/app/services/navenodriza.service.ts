@@ -13,7 +13,7 @@ export class NavenodrizaService {
     private httpService: HttpClient
   ) { }
 
-  crearNave(nave: Navenodriza): Observable<Navenodriza> {
+  crearNave(nave: Navenodriza): Observable<any> {
     return this.httpService.post<Navenodriza>('http://localhost:8000/naveNodriza', nave);
   }
 

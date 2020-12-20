@@ -14,7 +14,7 @@ export class AeronaveService {
     private httpService: HttpClient
   ) { }
 
-  crearAeroNave(aeronave: Aeronave): Observable<Aeronave> {
+  crearAeroNave(aeronave: Aeronave): Observable<any> {
     return this.httpService.post<Aeronave>('http://localhost:8000/aeronave', aeronave);
   }
 

@@ -99,7 +99,19 @@ export class CrearrevisionComponent implements OnInit {
       fecha: this.crearRevisionForm.value.fecha,
       idAeronave: this.crearRevisionForm.value.idAeronave,
       nombre: null
-    }).subscribe( (res) => console.log(res));
+    }).subscribe( (res) => { 
+      switch (res) {
+        case "CREADO":
+          //mensaje confirmación
+          break;
+        case "ID_DUPLICADO":
+          //mensaje error Id duplicada o ya existe
+          break;
+          case "FECHA_DUPLICADA":
+            //mensaje error fecha duplicada o ya existe
+            break;
+       }
+    });
   }
 
   listarAeronaves(){

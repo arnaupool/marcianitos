@@ -14,7 +14,7 @@ export class RevisionService {
     private httpService: HttpClient
   ) { }
 
-  crearRevision(revision: Revision): Observable<Revision> {
+  crearRevision(revision: Revision): Observable<any> {
     return this.httpService.post<Revision>('http://localhost:8000/revision', revision);
   }
 
