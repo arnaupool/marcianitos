@@ -34,7 +34,6 @@ import { ListarmarcianosComponent } from './revision/listarhistorial/listarmarci
     BajarmarcianoComponent,
     CrearrevisionComponent,
     ListarnodrizaComponent,
-    ListarrevisionComponent,
     ListarhistorialComponent,
     DetalleaeronaveComponent,
     AsignarpasajerosComponent,

@@ -4,11 +4,12 @@ import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from "@angular/material/dia
 import { CrearaeronaveComponent } from './aeronave/crearaeronave/crearaeronave.component';
 import { CrearnavenodrizaComponent } from './navenodriza/crearnavenodriza/crearnavenodriza.component';
 import { ListarnodrizaComponent } from './navenodriza/listarnodriza/listarnodriza.component';
-import { ListarrevisionComponent } from './revision/listarrevision/listarrevision.component';
+import { CrearrevisionComponent } from './revision/crearrevision/crearrevision.component';
 import { ListarhistorialComponent } from './revision/listarhistorial/listarhistorial.component';
 
 // Services
 import {MarcianoService} from './services/marciano.service';
+
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ export class AppComponent {
         this.component = ListarnodrizaComponent;
         break;
       case "l_rev":
-        this.component = ListarrevisionComponent;
+        this.component = CrearrevisionComponent;
         break;
       case "l_hist":
         this.component = ListarhistorialComponent;
