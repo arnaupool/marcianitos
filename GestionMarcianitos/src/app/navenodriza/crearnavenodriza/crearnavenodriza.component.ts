@@ -5,6 +5,7 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 // Services
 import {NavenodrizaService} from '../../services/navenodriza.service';
@@ -19,50 +20,47 @@ export class CrearnavenodrizaComponent implements OnInit {
   errorMessages: any;
   constructor(
     private navenodrizaService: NavenodrizaService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<CrearnavenodrizaComponent>
   ) { }
 
   ngOnInit(): void {
+    this.defineErrorMessages();
+    this.defineValidators();
   }
 
   defineValidators() {
     this.crearAeronaveForm = this.formBuilder.group({
-      idAeronave: new FormControl('',
+      idNavenodriza: new FormControl('',
       Validators.compose([
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(15)
       ])
       ),
-      nombreAeronave : new FormControl('',
+      nombreNavenodriza : new FormControl('',
       Validators.compose([
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(20)
       ])
-      ),
-      maxMarcianos: new FormControl('',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(15)
-      ])
-      ),
-      idOrigen: new FormControl('',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(15)
-      ])
-      ),
-      idDestino: new FormControl('',
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(30)
-      ])
       )
     });
+  }
+
+  defineErrorMessages(){
+    this.errorMessages = {
+      idNavenodriza: [
+        { type: 'required', message: 'ID de la nave nodriza es necesario.' },
+        { type: 'maxlength', message: 'El ID de la nave nodriza debe ser inferior a 15 caracteres .'
+        }
+      ],
+      nombreNavenodriza: [
+        { type: 'required', message: 'El nombre de la nave nodriza es necesario.' },
+        { type: 'maxlength', message: 'El nombre debe ser inferior a 20 caracteres .'
+        }
+      ]
+    };
   }
 
   crearNavenodriza(){
@@ -81,6 +79,10 @@ export class CrearnavenodrizaComponent implements OnInit {
     }
   }
     );
+  }
+
+  cancelar() {
+    this.dialogRef.close();
   }
 
 }

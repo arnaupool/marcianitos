@@ -13,6 +13,7 @@ import {NavenodrizaService} from '../../services/navenodriza.service';
 
 // Entities
 import { Navenodriza } from '../../entities/navenodriza';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-crearaeronave',
@@ -27,7 +28,8 @@ export class CrearaeronaveComponent implements OnInit {
   constructor(
     private aeroNaveService: AeronaveService,
     private navenodrizaService: NavenodrizaService,
-    private readonly formBuilder: FormBuilder
+    private readonly formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<CrearaeronaveComponent>
   ) { }
 
   ngOnInit(): void {
@@ -132,5 +134,9 @@ export class CrearaeronaveComponent implements OnInit {
         console.log(this.naveNodriza);
       }
     );
+  }
+
+  cancelar() {
+    this.dialogRef.close();
   }
 }
