@@ -1,6 +1,7 @@
 # GestionMarcianitos
 
 Proyecto de ISI de los alumnos Sandra Orengo Faus y Arnau Ruiz Fuster.
+
 Se presupone que [npm](https://www.npmjs.com/), [nodejs](https://nodejs.org/es/) y [Git](https://git-scm.com/) se encuentran ya instalados en el equipo.
 
 ## Descarga del proyecto
