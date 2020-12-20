@@ -13,7 +13,7 @@ En la carpeta del proyecto, ejecutar `cd ./backend/http` y luego `node main.js` 
 
 En la carpeta del proyecto, hay dos opciones viables:
 * Ejecutar `ng s`, y una vez finalizado ir a `localhost:4200/` desde un navegador.
-* Ejecutar `ng s -o`, y la aplicación se abrirá automáticamente.
+* Ejecutar `ng s -o` y la aplicación se abrirá automáticamente en un navegador.
 
 ## Mock-ups
 
