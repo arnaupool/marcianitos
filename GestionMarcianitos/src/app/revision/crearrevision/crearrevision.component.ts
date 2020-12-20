@@ -7,20 +7,32 @@ import {
 } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 
+// Services
+import { RevisionService } from '../../services/revision.service';
+import { AeronaveService } from '../../services/aeronave.service';
+import { Aeronave } from 'src/app/entities/aeronave';
+
 @Component({
   selector: 'app-crearrevision',
   templateUrl: './crearrevision.component.html',
   styleUrls: ['./crearrevision.component.css']
 })
 export class CrearrevisionComponent implements OnInit {
-
   crearRevisionForm : FormGroup;
   errorMessages: any;
-  constructor(private readonly formBuilder: FormBuilder, private dialogRef: MatDialogRef<CrearrevisionComponent>) {  }
+  aeronaves: Aeronave[] = [];
+
+  constructor(
+    private readonly formBuilder: FormBuilder, 
+    private dialogRef: MatDialogRef<CrearrevisionComponent>,
+    private revisionService: RevisionService,
+    private aeronaveService:AeronaveService
+    ) {  }
 
   ngOnInit(): void {
     this.defineValidators();
     this.defineErrorMessages();
+    this.listarAeronaves();
   }
 
   defineValidators() {
@@ -78,8 +90,26 @@ export class CrearrevisionComponent implements OnInit {
   }
 
   crearRevision() {
-
+    //comprobar si la aeronave tiene una revision con esa fecha 
+    
+    //Crear revision
+    this.revisionService.crearRevision({
+      id: this.crearRevisionForm.value.idRevAeronave,
+      nombreRevisor: this.crearRevisionForm.value.nombreRevisor,
+      fecha: this.crearRevisionForm.value.fecha,
+      idAeronave: this.crearRevisionForm.value.idAeronave,
+      nombre: null
+    }).subscribe( (res) => console.log(res));
   }
+
+  listarAeronaves(){
+    this.aeronaveService.listarAeroNaves().subscribe(
+      (res) => {
+        this.aeronaves = res as Aeronave[];
+          console.log(this.aeronaves);
+        }
+      );
+    }
 
   cancelar() {
     this.dialogRef.close();
