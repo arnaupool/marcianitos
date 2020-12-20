@@ -3,6 +3,6 @@ export class Revision {
     nombreRevisor: string;
     fecha: Date;
     idAeronave: number;
-
+    nombre: string;
 constructor(){}
 }

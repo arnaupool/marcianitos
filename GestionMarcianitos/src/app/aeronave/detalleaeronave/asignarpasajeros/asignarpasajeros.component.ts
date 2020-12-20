@@ -3,6 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+// Services
+import { MarcianoService } from '../../../services/marciano.service';
+
+// Entities
+import {Marciano} from '../../../entities/marciano';
+
 @Component({
   selector: 'app-asignarpasajeros',
   templateUrl: './asignarpasajeros.component.html',
@@ -14,7 +20,15 @@ export class AsignarpasajerosComponent implements OnInit {
   asignarPasajeroForm : FormGroup;
   errorMessages: any;
 
-  constructor(private readonly formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data, private dialogRef: MatDialogRef<AsignarpasajerosComponent>) { this.nave_id = data.id; this.nave_nombre = data.nombre; }
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data, 
+    private dialogRef: MatDialogRef<AsignarpasajerosComponent>,
+    private marcianoService:MarcianoService
+    ) { 
+      this.nave_id = data.id; 
+      this.nave_nombre = data.nombre; 
+    }
 
   ngOnInit(): void {
     this.defineValidators();
@@ -44,8 +58,17 @@ export class AsignarpasajerosComponent implements OnInit {
   }
 
   asignarPasajero() {
+    //Consultar ID
+
+    //Abrir ventana para crear marciano
+
     //Asignar pasajero a nave
-    //Si el pasajero no existe, se crea
+    this.marcianoService.modificarMarciano({
+      id: this.asignarPasajeroForm.value.idPasajero,
+      nombre: null, 
+      idAeronave: this.nave_id,
+    }).subscribe( (res) => console.log(res));
+
   }
 
   cancelar() {
