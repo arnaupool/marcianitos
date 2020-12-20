@@ -2,6 +2,9 @@
 
 Proyecto de ISI de los alumnos Sandra Orengo Faus y Arnau Ruiz Fuster.
 
+## Descarga del proyecto
+Para la descarga de este proyecto, abrir una consola en la ubicación preferida y ejecutar `git clone https://github.com/arnaupool/marcianitos`.
+
 ## Instalación de dependencias
 Ejecutar `npm install` en la carpeta del proyecto para la instalación de las dependencias necesarias.
 
