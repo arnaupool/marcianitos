@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import { ListarmarcianosComponent } from './listarmarcianos/listarmarcianos.component';
+import { from } from 'rxjs';
 
 //Entities
 import { Revision } from '../../entities/revision';
-import { Marciano } from '../../entities/marciano';
+import { Historialmarciano } from '../../entities/historialmarciano';
 
 //Service
-import {RevisionService} from '../../services/revision.service';
-import { from } from 'rxjs';
+import { RevisionService } from '../../services/revision.service';
+import { HistorialmarcianoService } from '../../services/historialmarciano.service';
+
 
 @Component({
   selector: 'app-listarhistorial',
@@ -23,10 +25,13 @@ export class ListarhistorialComponent implements OnInit {
     { id: "REV-4", aero_id: "AIR-4", aero_nombre: "Turbotron", fecha: "13/08/1975"}
   ];*/
   revisiones : Revision[] = [];
+  marcianos :  Historialmarciano[] = [];
+  marcianoHisto : Historialmarciano[] = [];
 
   constructor(
     private dialog: MatDialog,
-    private revisionService: RevisionService
+    private revisionService: RevisionService,
+    private historialMarcianoService: HistorialmarcianoService
     ) { }
 
   ngOnInit(): void {
@@ -54,6 +59,18 @@ export class ListarhistorialComponent implements OnInit {
       (res) => {
         this.revisiones = res as Revision[];
         console.log(this.revisiones);
+        for(let rev of this.revisiones){        
+          this.historialMarcianoService.listarHistorialDeRevision(rev.id).subscribe(
+            (res) => {
+              this.marcianos = res as Historialmarciano[];
+              for(let res of this.marcianos){
+                this.marcianoHisto.push(res);
+                
+              }
+            }
+          );
+        }
+        console.log(this.marcianoHisto);
       }
     );
   }

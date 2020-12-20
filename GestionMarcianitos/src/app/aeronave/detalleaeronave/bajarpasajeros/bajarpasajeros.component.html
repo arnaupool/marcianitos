@@ -5,7 +5,9 @@
             <br>
             <div class="form-group">
                 <label>Identificador</label>
-                <input type="text" class="form-control" id="idPasajero" formControlName="idPasajero" placeholder="ID del pasajero" required>
+                <select class="custom-select mr-sm-2" id="idPasajero" formControlName="idPasajero" required>
+                    <option *ngFor="let marciano of this.marcianos" value={{marciano.id}}>{{marciano.nombre}}</option>
+                </select>
                 <div>
                     <ng-container *ngFor="let error of errorMessages.idPasajero">
                         <div class="error-message alert alert-danger" *ngIf="bajarPasajeroForm.get('idPasajero').hasError(error.type) &&
@@ -21,7 +23,7 @@
                         <button class="btn btn-primary" (click)="cancelar()">Cancelar</button>
                     </div>
                     <div class="form-col">
-                        <button type="submit" class="btn btn-primary ml-3" [disabled]="!bajarPasajeroForm.valid">Crear</button>
+                        <button type="submit" class="btn btn-primary ml-3" [disabled]="!bajarPasajeroForm.valid">Bajar</button>
                     </div>
                 </div>
             </div>
