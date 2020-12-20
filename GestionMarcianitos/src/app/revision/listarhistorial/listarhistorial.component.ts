@@ -3,10 +3,12 @@ import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA} from "@angular/material/dia
 import { ListarmarcianosComponent } from './listarmarcianos/listarmarcianos.component';
 
 //Entities
-import {Revision} from '../../entities/revision';
+import { Revision } from '../../entities/revision';
+import { Marciano } from '../../entities/marciano';
 
 //Service
 import {RevisionService} from '../../services/revision.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-listarhistorial',
