@@ -1,15 +1,31 @@
 <div>
-    <form (ngSubmit)="crearNavenodriza()" autocomplete="off">
+    <form [formGroup]="crearAeronaveForm" (ngSubmit)="crearNavenodriza()" autocomplete="off">
         <div class="container">
             <h3>Crear Nave Nodriza</h3>
             <br>
             <div class="form-group">
                 <label>Identificador</label>
                 <input type="text" class="form-control" id="idNavenodriza" formControlName="idNavenodriza" placeholder="ID" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.idNavenodriza">
+                        <div class="error-message alert alert-danger" *ngIf="crearAeronaveForm.get('idNavenodriza').hasError(error.type) &&
+                                    (crearAeronaveForm.get('idNavenodriza').dirty || crearAeronaveForm.get('idNavenodriza').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
             <div class="form-group">
                 <label>Nombre Nave Nodriza</label>
                 <input type="text" class="form-control" id="nombreNavenodriza" formControlName="nombreNavenodriza" placeholder="Nombre" required>
+                <div>
+                    <ng-container *ngFor="let error of errorMessages.nombreNavenodriza">
+                        <div class="error-message alert alert-danger" *ngIf="crearAeronaveForm.get('nombreNavenodriza').hasError(error.type) &&
+                                    (crearAeronaveForm.get('nombreNavenodriza').dirty || crearAeronaveForm.get('nombreNavenodriza').touched)">
+                            {{ error.message }}
+                        </div>
+                    </ng-container>
+                </div>
             </div>
             <div class="form-group">
                 <div class="form-row float-right">

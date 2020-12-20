@@ -11,7 +11,7 @@
                 <div>
                     <ng-container *ngFor="let error of errorMessages.idPasajero">
                         <div class="error-message alert alert-danger" *ngIf="bajarPasajeroForm.get('idPasajero').hasError(error.type) &&
-                                      (bajarPasajeroForm.get('idPasajero').dirty || bajarPasajeroForm.get('idPasajero').touched)">
+                                    (bajarPasajeroForm.get('idPasajero').dirty || bajarPasajeroForm.get('idPasajero').touched)">
                             {{ error.message }}
                         </div>
                     </ng-container>

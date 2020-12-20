@@ -4,7 +4,7 @@
     </h2>
     <div fxLayoutAlign="start start">
         <ul class="list-group">
-            <li class="list-group-item list-group-item-action" *ngFor="let rev of revisiones" (click)="openDialog(rev)">
+            <li style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let rev of revisiones" (click)="openDialog(rev)">
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1"><b>ID:</b> {{rev.id}}  ─ <b>Fecha:</b> {{rev.fecha}}</h4>
                 </div>

@@ -4,7 +4,7 @@
     </h2>
     <div fxLayoutAlign="start start">
         <ul class="list-group">
-            <li class="list-group-item list-group-item-action" *ngFor="let aero of aeronaves" (click)="openDialog(aero)">
+            <li style="cursor: pointer;" class="list-group-item list-group-item-action" *ngFor="let aero of aeronaves" (click)="openDialog(aero)">
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1"><b>ID Aeronave:</b> {{aero.id}}</h4>
                   </div>
