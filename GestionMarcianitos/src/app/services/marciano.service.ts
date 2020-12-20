@@ -15,12 +15,12 @@ export class MarcianoService {
     private httpService: HttpClient
   ) { }
 
-  crearMarciano(marciano: Marciano) {
+  crearMarciano(marciano: Marciano): Observable<any>{
     return this.httpService.post('http://localhost:8000/marciano', marciano);
   }
 
-  modificarMarciano(marciano: Marciano){
-    return this.httpService.put('http://localhost:8000/marciano', marciano);
+  modificarMarciano(marciano: Marciano): Observable<any>{
+    return this.httpService.put<any>('http://localhost:8000/marciano', marciano);
   }
 
   listarMarciano(idAeronave: number): Observable<Marciano[]>{

@@ -64,8 +64,14 @@ export class BajarpasajerosComponent implements OnInit {
     this.marcianoService.modificarMarciano({
       id: this.bajarPasajeroForm.value.idPasajero,
       nombre: null, 
-      idAeronave: this.nave_id,
-    }).subscribe( (res) => console.log(res));
+      idAeronave: null
+    }).subscribe( (res) => { 
+      switch (res.msg) {
+        case "MODIFICADO":
+          //mensaje confirmación
+          break;
+      }
+    });
   }
 
   listarMarcianosNave(){
