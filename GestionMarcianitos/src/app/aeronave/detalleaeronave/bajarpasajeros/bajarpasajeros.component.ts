@@ -1,13 +1,14 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Services
 import { MarcianoService } from '../../../services/marciano.service';
 
 // Entities
 import {Marciano} from '../../../entities/marciano';
+import { VentanaerrorComponent } from 'src/app/ventanaerror/ventanaerror.component';
 
 @Component({
   selector: 'app-bajarpasajeros',
@@ -22,6 +23,7 @@ export class BajarpasajerosComponent implements OnInit {
   errorMessages: any;
 
   constructor(
+    private dialog: MatDialog,
     private readonly formBuilder: FormBuilder, 
     @Inject(MAT_DIALOG_DATA) public data, 
     private dialogRef: MatDialogRef<BajarpasajerosComponent>,
@@ -65,10 +67,17 @@ export class BajarpasajerosComponent implements OnInit {
       id: this.bajarPasajeroForm.value.idPasajero,
       nombre: null, 
       idAeronave: null
-    }).subscribe( (res : any) => { 
+    }).subscribe( (res : any) => {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      dialogConfig.height = "200px";
+      dialogConfig.width = "300px";
       switch (res.msg) {
         case "MODIFICADO":
           //mensaje confirmación
+          dialogConfig.data = {motivo: "Confirmación", error: "Marciano bajado correctamente"}
+          this.dialog.open(VentanaerrorComponent, dialogConfig);
           break;
       }
     });

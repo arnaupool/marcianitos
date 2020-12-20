@@ -64,7 +64,7 @@ export class DetalleaeronaveComponent implements OnInit {
       name: this.nombre
     }
 
-    this.dialog.open(this.component, dialogConfig);
+    this.dialog.open(this.component, dialogConfig).afterClosed().subscribe(() => this.listarMarcianitos());;
   }
 
   listarMarcianitos(){

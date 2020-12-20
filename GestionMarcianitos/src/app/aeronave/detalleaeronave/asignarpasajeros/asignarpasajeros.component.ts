@@ -9,6 +9,7 @@ import { MarcianoService } from '../../../services/marciano.service';
 
 // Entities
 import {Marciano} from '../../../entities/marciano';
+import { VentanaerrorComponent } from 'src/app/ventanaerror/ventanaerror.component';
 
 @Component({
   selector: 'app-asignarpasajeros',
@@ -21,6 +22,7 @@ export class AsignarpasajerosComponent implements OnInit {
   asignarPasajeroForm : FormGroup;
   errorMessages: any;
   dialogConfig;
+  marcianos: Marciano[] = [];
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -62,8 +64,7 @@ export class AsignarpasajerosComponent implements OnInit {
 
   asignarPasajero() {
     //Consultar ID
-    this.marcianoService.getMarciano(
-      this.asignarPasajeroForm.value.idPasajero).subscribe(
+    this.marcianoService.getMarciano(this.asignarPasajeroForm.value.idPasajero).subscribe(
       (res) =>{
         console.log(res);
         if(res.length == 0){
@@ -76,21 +77,40 @@ export class AsignarpasajerosComponent implements OnInit {
           this.dialog.open(CrearmarcianoComponent, this.dialogConfig);
 
         } else{
-          //Asignar pasajero a nave
-          this.marcianoService.modificarMarciano({
-            id: this.asignarPasajeroForm.value.idPasajero,
-            nombre: null, 
-            idAeronave: this.nave_id
-          }).subscribe( (res) => { 
-            switch (res.msg) {
-              case "MODIFICADO":
-                //mensaje confirmación
-                break;
+          const dialogConfig = new MatDialogConfig();
+          dialogConfig.disableClose = false;
+          dialogConfig.autoFocus = true;
+          dialogConfig.height = "200px";
+          dialogConfig.width = "300px";
+
+          this.marcianoService.listarMarciano(this.nave_id).subscribe(
+            (res) => {
+              this.marcianos = res as Marciano[];
+              for(let marciano of this.marcianos){
+                if(marciano.id == this.asignarPasajeroForm.value.idPasajero){
+                  //MESAJE DE ERROR marciano ya subido
+                  dialogConfig.data = {motivo: "Error", error: "El marciano ya se encuentra en la nave"}
+                  this.dialog.open(VentanaerrorComponent, dialogConfig);
+              } else{
+              //Asignar pasajero a nave
+                this.marcianoService.modificarMarciano({
+                id: this.asignarPasajeroForm.value.idPasajero,
+                nombre: null, 
+                idAeronave: this.nave_id
+              }).subscribe( (res) => {
+                switch (res.msg) {
+                    case "MODIFICADO":
+                    //mensaje confirmación
+                    dialogConfig.data = {motivo: "Confirmación", error: "Marciano asignado correctamente"}
+                    this.dialog.open(VentanaerrorComponent, dialogConfig);
+                    break;
+                  }
+              });
             }
-          });
-        }
+          }
+        });
       }
-    );
+    });
   }
 
   cancelar() {
