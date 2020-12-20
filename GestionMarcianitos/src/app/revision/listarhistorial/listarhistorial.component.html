@@ -1,23 +1,15 @@
-
-
-
-<h1>Historial de revisiones</h1>
-<div fxLayoutAlign="start start">
-    <ul class="aerolist">
-        <li *ngFor="let rev of revisiones" (click)="openDialog(rev)">
-            <mat-card class="mat-card">
-                <mat-card-title>ID: {{rev.id}} ─ Fecha: {{rev.fecha}}</mat-card-title>
-                <mat-card-content> ─ Aeronave: {{rev.nombre}} ({{rev.idAeronave}})</mat-card-content>
-            </mat-card>
-            <ng-container *ngFor="let marcianos of marcianoHisto">
-                <ul class="aerolist">
-                    <li *ngIf="rev.id == marcianos.idRevision">
-                        <mat-card class="mat-card">
-                            <mat-card-title>ID: {{marcianos.idMarciano}} ─ Nombre: {{marcianos.nombre}}</mat-card-title>
-                        </mat-card>
-                    </li>
-                </ul>
-            </ng-container>
-        </li>
-    </ul>
+<div class="card">
+    <h2 class="card-header text-white bg-primary">
+        Historial de revisiones
+    </h2>
+    <div fxLayoutAlign="start start">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action" *ngFor="let rev of revisiones" (click)="openDialog(rev)">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1"><b>ID:</b> {{rev.id}}  ─ <b>Fecha:</b> {{rev.fecha}}</h4>
+                </div>
+                <p class="mb-1"><b>Nombre:</b> {{rev.nombre}}</p>
+            </li>
+        </ul>
+    </div>
 </div>

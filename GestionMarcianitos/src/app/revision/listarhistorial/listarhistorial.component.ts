@@ -42,14 +42,15 @@ export class ListarhistorialComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       rev_id: hist.id,
-      aero_id: hist.aero_id,
-      aero_nombre: hist.nombre      
+      aero_id: hist.idAeronave,
+      aero_nombre: hist.nombre,
+      marcianos: this.marcianoHisto  
     }
 
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = "600px";
-    dialogConfig.width = "800px";
+    dialogConfig.height = "400px";
+    dialogConfig.width = "600px";
 
     this.dialog.open(ListarmarcianosComponent, dialogConfig);
   }
