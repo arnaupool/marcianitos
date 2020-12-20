@@ -23,6 +23,7 @@ export class AsignarpasajerosComponent implements OnInit {
   errorMessages: any;
   dialogConfig;
   marcianos: Marciano[] = [];
+  flag : boolean = false;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -65,8 +66,8 @@ export class AsignarpasajerosComponent implements OnInit {
   asignarPasajero() {
     //Consultar ID
     this.marcianoService.getMarciano(this.asignarPasajeroForm.value.idPasajero).subscribe(
-      (res) =>{
-        console.log(res);
+      (res) => {
+        //console.log(res);
         if(res.length == 0){
           //Abrir ventana para crear marciano
           this.dialogConfig = new MatDialogConfig();
@@ -76,7 +77,7 @@ export class AsignarpasajerosComponent implements OnInit {
           this.dialogConfig.width = "800px";
           this.dialog.open(CrearmarcianoComponent, this.dialogConfig);
 
-        } else{
+        } else {
           const dialogConfig = new MatDialogConfig();
           dialogConfig.disableClose = false;
           dialogConfig.autoFocus = true;
@@ -86,32 +87,37 @@ export class AsignarpasajerosComponent implements OnInit {
           this.marcianoService.listarMarciano(this.nave_id).subscribe(
             (res) => {
               this.marcianos = res as Marciano[];
-              for(let marciano of this.marcianos){
+              for(let marciano of this.marcianos) {
                 if(marciano.id == this.asignarPasajeroForm.value.idPasajero){
                   //MESAJE DE ERROR marciano ya subido
                   dialogConfig.data = {motivo: "Error", error: "El marciano ya se encuentra en la nave"}
                   this.dialog.open(VentanaerrorComponent, dialogConfig);
+                  this.flag = true;
                   break;
-              } else{
-              //Asignar pasajero a nave
+                } else {
+                //Asignar pasajero a nave
+                  console.log("Nothing");
+                }
+              }
+
+              if (!this.flag) {
                 this.marcianoService.modificarMarciano({
-                id: this.asignarPasajeroForm.value.idPasajero,
-                nombre: null, 
-                idAeronave: this.nave_id
-              }).subscribe( (res) => {
-                switch (res.msg) {
-                    case "MODIFICADO":
-                    //mensaje confirmación
-                    dialogConfig.data = {motivo: "Confirmación", error: "Marciano asignado correctamente"}
-                    this.dialog.open(VentanaerrorComponent, dialogConfig);
-                    break;
-                  }
-              });
-            }
-          }
-        });
-      }
-    });
+                  id: this.asignarPasajeroForm.value.idPasajero,
+                  nombre: null, 
+                  idAeronave: this.nave_id
+                  }).subscribe( (res) => {
+                    switch (res.msg) {
+                        case "MODIFICADO":
+                        //mensaje confirmación
+                        dialogConfig.data = {motivo: "Confirmación", error: "Marciano asignado correctamente"}
+                        this.dialog.open(VentanaerrorComponent, dialogConfig);
+                        break;
+                    }
+                  });
+              }
+            });
+        }
+      });
   }
 
   cancelar() {
