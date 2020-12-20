@@ -42,7 +42,7 @@ export class ListaraeronaveComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.height = "600px";
-    dialogConfig.width = "1000px";
+    dialogConfig.width = "800px";
 
     this.dialog.open(DetalleaeronaveComponent, dialogConfig);
   }
