@@ -16,7 +16,6 @@ import { SubirmarcianoComponent } from './marciano/subirmarciano/subirmarciano.c
 import { BajarmarcianoComponent } from './marciano/bajarmarciano/bajarmarciano.component';
 import { CrearrevisionComponent } from './revision/crearrevision/crearrevision.component';
 import { ListarnodrizaComponent } from './navenodriza/listarnodriza/listarnodriza.component';
-import { ListarrevisionComponent } from './revision/listarrevision/listarrevision.component';
 import { ListarhistorialComponent } from './revision/listarhistorial/listarhistorial.component';
 import { DetalleaeronaveComponent } from './aeronave/detalleaeronave/detalleaeronave.component';
 import { AsignarpasajerosComponent } from './aeronave/detalleaeronave/asignarpasajeros/asignarpasajeros.component';
