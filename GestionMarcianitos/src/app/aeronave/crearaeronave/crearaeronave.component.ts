@@ -13,7 +13,8 @@ import {NavenodrizaService} from '../../services/navenodriza.service';
 
 // Entities
 import { Navenodriza } from '../../entities/navenodriza';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { VentanaerrorComponent } from 'src/app/ventanaerror/ventanaerror.component';
 
 @Component({
   selector: 'app-crearaeronave',
@@ -26,6 +27,7 @@ export class CrearaeronaveComponent implements OnInit {
   naveNodriza: Navenodriza[] = [];
 
   constructor(
+    private dialog: MatDialog,
     private aeroNaveService: AeronaveService,
     private navenodrizaService: NavenodrizaService,
     private readonly formBuilder: FormBuilder,
@@ -115,13 +117,23 @@ export class CrearaeronaveComponent implements OnInit {
       max: this.crearAeronaveForm.value.maxMarcianos,
       origen: this.crearAeronaveForm.value.idOrigen,
       destino: this.crearAeronaveForm.value.idDestino
-    }).subscribe( (res) => { 
-      switch (res) {
+    }).subscribe( (res : any) => {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      dialogConfig.height = "200px";
+      dialogConfig.width = "300px";
+
+      switch (res.msg) {
         case "CREADO":
           //mensaje confirmación
+          dialogConfig.data = {motivo: "Confirmación", error: "Aeronave creada correctamente"}
+          this.dialog.open(VentanaerrorComponent, dialogConfig);
           break;
         case "ID_DUPLICADO":
           //mensaje error Id duplicada o ya existe
+          dialogConfig.data = {motivo: "Error", error: "ID ya en uso. Aeronave no creada."}
+          this.dialog.open(VentanaerrorComponent, dialogConfig);
           break;
       }
     });

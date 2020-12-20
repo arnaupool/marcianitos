@@ -6,6 +6,7 @@ import { CrearnavenodrizaComponent } from './navenodriza/crearnavenodriza/crearn
 import { ListarnodrizaComponent } from './navenodriza/listarnodriza/listarnodriza.component';
 import { CrearrevisionComponent } from './revision/crearrevision/crearrevision.component';
 import { ListarhistorialComponent } from './revision/listarhistorial/listarhistorial.component';
+import { VentanaerrorComponent } from './ventanaerror/ventanaerror.component';
 
 // Services
 import {MarcianoService} from './services/marciano.service';
@@ -56,5 +57,15 @@ export class AppComponent {
     dialogConfig.width = "800px";
 
     this.dialog.open(this.component, dialogConfig);
+  }
+
+  open() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = "600px";
+    dialogConfig.width = "800px";
+
+    this.dialog.open(VentanaerrorComponent, dialogConfig);
   }
 }

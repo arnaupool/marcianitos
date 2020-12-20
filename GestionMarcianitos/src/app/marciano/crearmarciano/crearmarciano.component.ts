@@ -5,6 +5,8 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { VentanaerrorComponent } from 'src/app/ventanaerror/ventanaerror.component';
 
 
 // Services
@@ -20,6 +22,7 @@ export class CrearmarcianoComponent implements OnInit {
   errorMessages: any;
 
   constructor(
+    private dialog: MatDialog,
     private marcianoService: MarcianoService,
     private readonly formBuilder: FormBuilder
   ) { }
@@ -69,13 +72,23 @@ crearMarciano(){
     id: this.crearMarcianoForm.value.idMarciano,
     nombre: this.crearMarcianoForm.value.nombreMarciano,
     idAeronave: null
-  }).subscribe( (res) => { 
-    switch (res) {
+  }).subscribe( (res : any) => {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = "200px";
+    dialogConfig.width = "300px";
+
+    switch (res.msg) {
       case "CREADO":
         //mensaje confirmación
+        dialogConfig.data = {motivo: "Confirmación", error: "Marciano creado correctamente"}
+        this.dialog.open(VentanaerrorComponent, dialogConfig);
         break;
       case "ID_DUPLICADO":
         //mensaje error Id duplicada o ya existe
+        dialogConfig.data = {motivo: "Error", error: "ID ya en uso. Marciano no creado."}
+        this.dialog.open(VentanaerrorComponent, dialogConfig);
         break;
     }
   });

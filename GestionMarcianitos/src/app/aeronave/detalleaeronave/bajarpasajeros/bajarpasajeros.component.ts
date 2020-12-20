@@ -65,7 +65,7 @@ export class BajarpasajerosComponent implements OnInit {
       id: this.bajarPasajeroForm.value.idPasajero,
       nombre: null, 
       idAeronave: null
-    }).subscribe( (res) => { 
+    }).subscribe( (res : any) => { 
       switch (res.msg) {
         case "MODIFICADO":
           //mensaje confirmación

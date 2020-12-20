@@ -5,12 +5,14 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import { VentanaerrorComponent } from '../../ventanaerror/ventanaerror.component';
 
 // Services
 import { RevisionService } from '../../services/revision.service';
 import { AeronaveService } from '../../services/aeronave.service';
 import { Aeronave } from 'src/app/entities/aeronave';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-crearrevision',
@@ -23,6 +25,7 @@ export class CrearrevisionComponent implements OnInit {
   aeronaves: Aeronave[] = [];
 
   constructor(
+    private dialog: MatDialog,
     private readonly formBuilder: FormBuilder, 
     private dialogRef: MatDialogRef<CrearrevisionComponent>,
     private revisionService: RevisionService,
@@ -99,18 +102,31 @@ export class CrearrevisionComponent implements OnInit {
       fecha: this.crearRevisionForm.value.fecha,
       idAeronave: this.crearRevisionForm.value.idAeronave,
       nombre: null
-    }).subscribe( (res) => { 
-      switch (res) {
+    }).subscribe( (res : any) => {
+
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      dialogConfig.height = "200px";
+      dialogConfig.width = "300px";
+
+      switch (res.msg) {
         case "CREADO":
           //mensaje confirmación
+          dialogConfig.data = {motivo: "Confirmación", error: "Revisión creada correctamente"}
+          this.dialog.open(VentanaerrorComponent, dialogConfig);
           break;
         case "ID_DUPLICADO":
+          dialogConfig.data = {motivo: "Error", error: "ID ya en uso. Revisión no creada."}
+          this.dialog.open(VentanaerrorComponent, dialogConfig);
           //mensaje error Id duplicada o ya existe
           break;
           case "FECHA_DUPLICADA":
+            dialogConfig.data = {motivo: "Error", error: "Ya hay una revisiñon con la fecha seleccionada. Revisión no creada."}
+          this.dialog.open(VentanaerrorComponent, dialogConfig);
             //mensaje error fecha duplicada o ya existe
             break;
-       }
+      }
     });
   }
 

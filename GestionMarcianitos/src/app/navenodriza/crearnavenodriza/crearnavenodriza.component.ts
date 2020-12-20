@@ -5,7 +5,8 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { VentanaerrorComponent } from 'src/app/ventanaerror/ventanaerror.component';
 
 // Services
 import {NavenodrizaService} from '../../services/navenodriza.service';
@@ -19,6 +20,7 @@ export class CrearnavenodrizaComponent implements OnInit {
   crearAeronaveForm: FormGroup;
   errorMessages: any;
   constructor(
+    private dialog: MatDialog,
     private navenodrizaService: NavenodrizaService,
     private readonly formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CrearnavenodrizaComponent>
@@ -68,13 +70,23 @@ export class CrearnavenodrizaComponent implements OnInit {
       id: this.crearAeronaveForm.value.idNavenodriza,
       nombre: this.crearAeronaveForm.value.nombreNavenodriza,
     }).subscribe( 
-      (res) => { 
-        switch (res) {
+      (res : any) => {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+        dialogConfig.height = "200px";
+        dialogConfig.width = "300px";
+
+        switch (res.msg) {
           case "CREADO":
             //mensaje confirmación
+            dialogConfig.data = {motivo: "Confirmación", error: "Nave nodriza creada correctamente"}
+            this.dialog.open(VentanaerrorComponent, dialogConfig);
             break;
           case "ID_DUPLICADO":
             //mensaje error Id duplicada o ya existe
+            dialogConfig.data = {motivo: "Error", error: "ID ya en uso. Nave nodriza no creada."}
+            this.dialog.open(VentanaerrorComponent, dialogConfig);
             break;
     }
   }
