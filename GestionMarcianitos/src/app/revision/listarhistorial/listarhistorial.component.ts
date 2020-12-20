@@ -70,7 +70,7 @@ export class ListarhistorialComponent implements OnInit {
             }
           );
         }
-        console.log(this.marcianoHisto);
+        //console.log(this.marcianoHisto);
       }
     );
   }

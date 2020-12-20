@@ -1,19 +1,24 @@
 <div>
-    <h1>Aeronave {{nombre}} ─ {{id}} ─ Pasajeros: {{current}} / {{max}}</h1>
+    <h1> <b>ID:</b> {{id}} ─ <b>Nombre</b> {{nombre}} ─ <b>Pasajeros:</b> {{current}} / {{max}}</h1>
     <div class="buttons">
         <button class="btn btn-primary" id="a_pas" (click)="openDialog($event)">Asignar pasajeros</button>
         <div class="divider"></div>
         <button class="btn btn-primary" id="b_pas" (click)="openDialog($event)">Bajar pasajeros</button>
     </div>
 
-    <div fxLayoutAlign="start start">
-        <ul class="aerolist">
-            <li *ngFor="let martian of marcianitos">
-                <mat-card class="mat-card">
-                    <mat-card-title>ID: {{martian.id}}</mat-card-title>
-                    <mat-card-content> Nombre: {{martian.nombre}}</mat-card-content>
-                </mat-card>
-            </li>
-        </ul>
+    <div class="card">
+        <h2 class="card-header text-white bg-primary">
+            Pasajeros de la aeronave
+        </h2>
+        <div fxLayoutAlign="start start">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let martian of marcianitos">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1"><b>ID:</b> {{martian.id}}</h4>
+                    </div>
+                    <p class="mb-1"><b>Nombre:</b> {{martian.nombre}}</p>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

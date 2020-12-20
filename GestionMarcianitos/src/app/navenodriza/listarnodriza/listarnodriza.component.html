@@ -1,11 +1,15 @@
-<h1>Naves nodrizas</h1>
-<div fxLayoutAlign="start start">
-    <ul class="aerolist">
-        <li *ngFor="let nodriza of nodrizas">
-          <mat-card class="mat-card">
-            <mat-card-title>ID: {{nodriza.id}}</mat-card-title>
-            <mat-card-content> Nombre: {{nodriza.nombre}}</mat-card-content>
-          </mat-card>
-        </li>
-    </ul>
+<div class="card">
+  <h2 class="card-header text-white bg-primary">
+      Naves nodrizas
+  </h2>
+  <div fxLayoutAlign="start start">
+      <ul class="list-group">
+          <li class="list-group-item" *ngFor="let nodriza of nodrizas">
+              <div class="d-flex w-100 justify-content-between">
+                  <h4 class="mb-1"><b>ID:</b> {{nodriza.id}}</h4>
+                </div>
+                <p class="mb-1"><b>Nombre:</b> {{nodriza.nombre}}</p>
+          </li>
+      </ul>
+  </div>
 </div>
