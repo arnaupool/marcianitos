@@ -16,7 +16,7 @@ export class MarcianoService {
   ) { }
 
   crearMarciano(marciano: Marciano): Observable<any>{
-    return this.httpService.post('http://localhost:8000/marciano', marciano);
+    return this.httpService.post<any>('http://localhost:8000/marciano', marciano);
   }
 
   modificarMarciano(marciano: Marciano): Observable<any>{

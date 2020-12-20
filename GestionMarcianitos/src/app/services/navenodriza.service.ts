@@ -14,7 +14,7 @@ export class NavenodrizaService {
   ) { }
 
   crearNave(nave: Navenodriza): Observable<any> {
-    return this.httpService.post<Navenodriza>('http://localhost:8000/naveNodriza', nave);
+    return this.httpService.post<any>('http://localhost:8000/naveNodriza', nave);
   }
 
   listarNaves(): Observable<Navenodriza[]>{

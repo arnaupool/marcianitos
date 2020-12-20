@@ -15,7 +15,7 @@ export class RevisionService {
   ) { }
 
   crearRevision(revision: Revision): Observable<any> {
-    return this.httpService.post<Revision>('http://localhost:8000/revision', revision);
+    return this.httpService.post<any>('http://localhost:8000/revision', revision);
   }
 
   listarRevision(): Observable<Revision[]>{
