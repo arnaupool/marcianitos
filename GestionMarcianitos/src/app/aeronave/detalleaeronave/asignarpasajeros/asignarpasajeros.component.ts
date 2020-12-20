@@ -59,16 +59,22 @@ export class AsignarpasajerosComponent implements OnInit {
 
   asignarPasajero() {
     //Consultar ID
-
-    //Abrir ventana para crear marciano
-
-    //Asignar pasajero a nave
-    this.marcianoService.modificarMarciano({
-      id: this.asignarPasajeroForm.value.idPasajero,
-      nombre: null, 
-      idAeronave: this.nave_id,
-    }).subscribe( (res) => console.log(res));
-
+    this.marcianoService.getMarciano(
+      this.asignarPasajeroForm.value.idPasajero).subscribe(
+      (res) =>{
+        if(res == []){
+          //Abrir ventana para crear marciano
+          
+        } else{
+          //Asignar pasajero a nave
+          this.marcianoService.modificarMarciano({
+            id: this.asignarPasajeroForm.value.idPasajero,
+            nombre: null, 
+            idAeronave: this.nave_id,
+          }).subscribe( (res) => console.log(res));
+        }
+      }
+    );
   }
 
   cancelar() {
