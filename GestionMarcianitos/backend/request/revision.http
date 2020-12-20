@@ -1,0 +1,16 @@
+GET http://localhost:8000/revision HTTP/1.1
+
+###
+GET http://localhost:8000/revision/revision/1 HTTP/1.1
+
+###
+
+POST http://localhost:8000/revision HTTP/1.1
+Content-Type: application/json 
+
+{
+    "id": 7,
+    "nombreRevisor": "Juan",
+    "fecha": "2020/11/15",
+    "idAeronave": 2
+}

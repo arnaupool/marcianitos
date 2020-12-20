@@ -64,16 +64,13 @@ export class ListarhistorialComponent implements OnInit {
           this.historialMarcianoService.listarHistorialDeRevision(rev.id).subscribe(
             (res) => {
               this.marcianos = res as Historialmarciano[];
-              console.log("HISTORIALES MARCIANOS:");
-              console.log(this.marcianos);
+              //console.log("HISTORIALES MARCIANOS: " + this.marcianos);
               for(let res of this.marcianos){
                 this.marcianoHisto.push(res);
-                
               }
             }
           );
         }
-        //console.log(this.marcianoHisto);
       }
     );
   }
