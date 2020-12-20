@@ -58,14 +58,4 @@ export class AppComponent {
 
     this.dialog.open(this.component, dialogConfig);
   }
-
-  open() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.height = "600px";
-    dialogConfig.width = "800px";
-
-    this.dialog.open(VentanaerrorComponent, dialogConfig);
-  }
 }

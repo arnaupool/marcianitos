@@ -5,7 +5,7 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { VentanaerrorComponent } from 'src/app/ventanaerror/ventanaerror.component';
 
 
@@ -22,6 +22,7 @@ export class CrearmarcianoComponent implements OnInit {
   errorMessages: any;
 
   constructor(
+    private dialogRef: MatDialogRef<CrearmarcianoComponent>,
     private dialog: MatDialog,
     private marcianoService: MarcianoService,
     private readonly formBuilder: FormBuilder
@@ -97,6 +98,10 @@ crearMarciano(){
 ngOnDestroy() {
   this.crearMarcianoForm.value.idMarciano = '';
   this.crearMarcianoForm.value.nombreMarciano = '';
+}
+
+cancelar() {
+  this.dialogRef.close();
 }
 
 }
