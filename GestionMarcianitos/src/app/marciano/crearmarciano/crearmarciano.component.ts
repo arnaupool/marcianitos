@@ -69,7 +69,16 @@ crearMarciano(){
     id: this.crearMarcianoForm.value.idMarciano,
     nombre: this.crearMarcianoForm.value.nombreMarciano,
     idAeronave: null
-  }).subscribe( (res) => console.log(res));
+  }).subscribe( (res) => { 
+    switch (res) {
+      case "CREADO":
+        //mensaje confirmación
+        break;
+      case "ID_DUPLICADO":
+        //mensaje error Id duplicada o ya existe
+        break;
+    }
+  });
 }
 
 ngOnDestroy() {
