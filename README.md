@@ -14,7 +14,7 @@ Ejecutar `npm install` en la carpeta del proyecto para la instalación de las de
 
 En la carpeta del proyecto, ejecutar `cd ./backend/http` y luego `node main.js` para iniciar el servidor.
 
-## Construcción y ejecucación de la aplicación
+## Construcción y ejecución de la aplicación
 
 En la carpeta del proyecto, hay dos opciones viables:
 * Ejecutar `ng s`, y una vez finalizado ir a `localhost:4200/` desde un navegador.
